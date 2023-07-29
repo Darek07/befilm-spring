@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Admin Panel</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="film">
+        <div class="desc-left">
+            <h1 th:text="${report.movieTitle}"></h1>
+            <h3>Created by @<span th:text="${report.nickname}"></span></h3>
+            <h3>Reports: <span th:text="${reports}"></span></h3>
+            <form method="post" th:action="@{/create_report}" th:object="${report}">
+                <input type="hidden" name="movieTitle" th:value="${report.movieTitle}" />
+                <input type="hidden" name="nickname" th:value="${report.nickname}" />
+                <h3>Report description:</h3>
+                <textarea name="rdesc" placeholder="Write report description" th:field="*{description}"></textarea><br>
+                <input th:name="submit" type="submit" value="Delete record">
+                <input th:name="submit" type="submit" value="Block user">
+            </form>
+        </div>
+        <div class="desc-right">
+            <a th:href="@{/reports/{nickname}(nickname=${report.nickname})}" class="btn">Look Report History</a>
+            <a th:href="@{/reports/blocked}" class="btn">Look Blocked Users</a>
+        </div>
+    </div>
+</div>
+</html>

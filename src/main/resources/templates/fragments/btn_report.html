@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<div layout:fragment="report(info)">
+    <div th:if="${movie.info.isPublic}">
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{/reports/{nickname}(nickname=${info.nickname})}" class="btn">Report
+                history</a>
+            <a th:href="@{/create_report/{nickname}/{title}(nickname=${info.nickname}, title=${info.title})}"
+               class="btn">Create report</a>
+        </div>
+    </div>
+</div>
+</html>

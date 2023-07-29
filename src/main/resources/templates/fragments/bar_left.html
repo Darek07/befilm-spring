@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+    <div class="left-bar" layout:fragment="left-bar(chosen)">
+        <nav>
+            <ul>
+                <li class="chosen" th:text="${chosen}"></li>
+                <div sec:authorize="isAuthenticated()">
+                    <li th:if="${chosen} != 'Watched'"><a th:href="@{/watched}">Watched</a></li>
+                    <li th:if="${chosen} != 'To Watch'"><a th:href="@{/towatch}">To Watch</a></li>
+                    <li th:if="${chosen} != 'Favorite'"><a th:href="@{/favorite}">Favorite</a></li>
+                    <li th:if="${chosen} != 'Public'"><a th:href="@{/public}">Public</a></li>
+                    <li th:if="${chosen} != 'Admin Panel'" sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin}">Admin Panel</a></li>
+                </div>
+            </ul>
+        </nav>
+
+        <footer sec:authorize="isAuthenticated()">
+            <a th:if="${chosen} != 'New Movie'" th:href="@{/new}">New</a>
+            <button th:if="${chosen} == 'New Movie'" form="new-movie" name="submit" type="submit">Save</button>
+        </footer>
+    </div>
+</html>

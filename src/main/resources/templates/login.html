@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}"
+>
+<head>
+    <title>Sign in</title>
+</head>
+<body layout:fragment="body">
+    <div class="container main">
+        <h1>BeFilm</h1>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div th:if="${param.success}">
+            You have been successfully registered. You can log in now.
+        </div>
+        <div layout:replace="~{fragments/form_login :: login-form}"></div>
+        <div layout:replace="~{fragments/right_menu :: right-menu(login=true)}"></div>
+    </div>
+</body>

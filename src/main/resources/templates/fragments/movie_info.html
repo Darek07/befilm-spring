@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="movie-info(info)">
+    <h1 th:text="${info.title}"></h1>
+    <h3>Premiere: <span th:text="${info.premiere}"></span></h3>
+    <h3>Country: <span th:text="${info.country}"></span></h3>
+    <h3>Genre: <span th:text="${info.genre}"></span></h3>
+    <p th:text="${info.description}"></p>
+</div>
+</html>

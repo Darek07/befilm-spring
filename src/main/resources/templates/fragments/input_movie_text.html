@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="text-form(title, placeholder)">
+    <h3 th:text="${title} + ':'"></h3>
+    <textarea th:name="${#strings.toLowerCase(title)}" th:placeholder="${placeholder}"></textarea>
+</div>
+</html>

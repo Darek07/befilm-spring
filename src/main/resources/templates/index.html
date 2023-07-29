@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$LAYOUT_TITLE: $CONTENT_TITLE">BiFilm</title>
+    <link th:href="@{/css/bifilm.css}" rel="stylesheet" type="text/css">
+</head>
+<body layout:fragment="body">
+    <div class="back">
+        <main class="container main">
+            <h1>BeFilm</h1>
+            <h3>Collect all your films in one place</h3>
+            <a th:href="@{/login}" class="btn">Let's start!</a>
+        </main>
+    </div>
+</body>
+</html>

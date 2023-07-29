@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>New Movie</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="film">
+        <form method="post" id="new-movie" enctype="multipart/form-data" th:action="@{/new}" th:object="${info}">
+            <div class="desc-left">
+                <div th:if="${param.error}">
+                    Necessary fields are empty.
+                </div>
+                <div layout:replace="~{fragments/input_movie_info :: info-form(${info})}"></div>
+                <div layout:replace="~{fragments/input_movie_text :: text-form('Authors', 'director Christopher Nolan')}"></div>
+                <div layout:replace="~{fragments/input_movie_text :: text-form('Actors', 'Emma Watson')}"></div>
+                <div layout:replace="~{fragments/input_movie_tags :: tags-form(${tags})}"></div>
+            </div>
+            <div class="desc-right">
+                <div layout:replace="~{fragments/input_movie_upload_img :: upload-form(${uploaded_image})}"></div>
+                <div layout:replace="~{fragments/input_movie_public :: public-form(${info})}"></div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

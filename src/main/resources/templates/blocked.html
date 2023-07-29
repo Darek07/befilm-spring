@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Blocked</title>
+</head>
+<div class="content" layout:fragment="content">
+    <h1 id="blocked">Your account has been blocked.</h1>
+    <div class="note" th:each="report : ${reports}">
+        <ul>
+            <li class="title" th:text="${report.movieTitle}"></li>
+            <li th:text="'Blocked: ' + ${report.blockUser}"></li>
+        </ul>
+        <p th:text="${report.description}"></p>
+        <p th:if="${chosen == 'To Watch'}" th:text="${movie.genre}"></p>
+        <div th:text="${report.dateTime}"></div>
+    </div>
+</div>
+</html>

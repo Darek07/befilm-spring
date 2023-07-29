@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="list-pattern(title, list)" th:with="lower_title=${#strings.toLowerCase(title)}">
+  <h3 th:text="${title}"></h3>
+  <h4 th:if="${#lists.isEmpty(list)}">No <span th:text="${lower_title}"></span></h4>
+  <h4 th:each="item : ${list}">
+    <span th:if="${lower_title == 'actors'}" th:text="${item.name + ' ' + item.surname}"></span>
+    <span th:if="${lower_title == 'authors'}" th:text="${item.role + ' ' + item.name + ' ' + item.surname}"></span>
+    <span th:if="${lower_title == 'tags'}" th:text="${'#' + item}"></span>
+  </h4>
+</div>
+</html>

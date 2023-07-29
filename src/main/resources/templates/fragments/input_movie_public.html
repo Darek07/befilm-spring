@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="public-form(info)">
+    <h3 style="padding: 0 37%; text-align: left" th:object="${info}">
+        <label class="checkbox-cont">Post public
+            <input type="checkbox" name="isPublic" th:checked="*{isPublic}">
+            <span class="checkmark"></span>
+        </label>
+        <span th:if="${#fields.hasErrors('isPublic')}" th:errors="*{isPublic}"></span>
+    </h3>
+</div>
+</html>

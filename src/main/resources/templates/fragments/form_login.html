@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <div class="login-form" layout:fragment="login-form">
+        <form method="post" th:action="@{/login}">
+            <input name="username"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="Nickname">
+
+            <input name="password"
+                   type="password"
+                   placeholder="Password">
+
+            <input name="submit" type="submit" value="Login">
+            <div th:if="${param.error}" class="text-danger">
+                Invalid username and password.
+            </div>
+        </form>
+    </div>
+</html>

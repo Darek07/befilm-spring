@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <nav class="right" layout:fragment="right-menu(login)">
+        <ul>
+            <li th:if="${login}"><a th:href="@{/register}">Sign up</a></li>
+            <li th:unless="${login}"><a th:href="@{/login}">Log in</a></li>
+            <li><a th:href="@{/}">Main page</a></li>
+            <li><a th:href="@{/public}">Film blog</a></li>
+            <li><a th:href="@{/ratings}">Ratings</a></li>
+        </ul>
+    </nav>
+</html>

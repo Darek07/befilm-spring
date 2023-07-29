@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="records(movies, chosen, create_report, likes)">
+    <div th:if="${#lists.isEmpty(movies)}" class="vertical-center">
+        <h1>
+            There are no records in '<span th:text="${chosen}"></span>' category yet.
+        </h1>
+    </div>
+
+    <div th:each="movie, movieIndex : ${movies}"
+         th:with="publicUrl = @{/movies/{nickname}/{movieTitle}(nickname=${movie.nickname}, movieTitle=${movie.title})},
+                  reportUrl = @{/create_report/{nickname}/{title}(nickname=${movie.nickname}, title=${movie.title})},
+                  simpleUrl = @{/movies/{movieTitle}(movieTitle=${movie.title})}">
+        <a th:href="${chosen == 'Public' ? publicUrl : (chosen == 'Create Report' ? reportUrl : simpleUrl)}">
+            <div class="note">
+                <ul>
+                    <li class="title">
+                        <span th:text="${#strings.length(movie.title) > 40 ? #strings.substring(movie.title, 0, 40) + '...' : movie.title}"></span>
+                    </li>
+                    <li th:text="${movie.premiere}"></li>
+                    <li th:text="${movie.country}"></li>
+                    <li th:if="${chosen == 'Public' || chosen == 'Create Report' || chosen == 'Ratings'}">@<span th:text="${movie.nickname}"></span></li>
+                    <li th:if="${likes}">Likes: <span th:text="${likes[movieIndex.index]}"></span></li>
+                </ul>
+                <p th:if="${chosen == 'Watched' || chosen == 'Favorite' || chosen == 'Public' || chosen == 'Create Report' || chosen == 'Ratings'}"
+                   th:text="${#strings.length(movie.description) > 110 ? #strings.substring(movie.description, 0, 110) + '...' : movie.description}">
+                </p>
+                <p th:if="${chosen == 'To Watch'}" th:text="${movie.genre}"></p>
+                <div th:if="${movie.isPublic != null}">
+                    <span th:if="${movie.isPublic}">Public</span>
+                    <span th:unless="${movie.isPublic}">Private</span>
+                </div>
+                <div th:unless="${movie.isPublic != null}" th:text="${movie.published}"></div>
+            </div>
+        </a>
+    </div>
+</div>
+</html>

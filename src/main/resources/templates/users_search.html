@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Admin Panel</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div id="users">
+        <h1 id="blocked">Pick user to add admin.</h1>
+        <div layout:replace="~{fragments/form_search :: search-form('nickname-box')}"></div>
+        <ul>
+            <li th:each="user : ${users}" >
+                <a class="nickname-box" th:href="@{/admin/add/{nickname}(nickname=${user})}">
+                    <span th:text="${user}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

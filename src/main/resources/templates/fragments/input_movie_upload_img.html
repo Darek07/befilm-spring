@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="upload-form(uploaded_image)">
+    <div>
+        <img id="imagePreview" src="#" alt="Uploaded image" style="display: none;">
+        <input type="text" name="uploaded_image" th:value="${uploaded_image}" accept="image/*" hidden>
+    </div>
+    <div class="img-input">
+        <input type="file" id="imageUpload" name="uploaded_image" value="uploaded_image" accept="image/*">
+    </div>
+    <script th:src="@{/js/image.js}"></script>
+</div>
+</html>

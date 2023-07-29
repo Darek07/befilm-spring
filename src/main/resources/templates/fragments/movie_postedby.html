@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="posted-by(info, username)">
+    <h3>Posted
+        <span th:text="${info.isPublic ? 'publicly' : 'privately'}"></span>
+        <span th:if="${info.nickname}">by
+            <span th:text="${info.nickname == username ? 'you' : '@' + info.nickname}"></span>
+        </span>
+    </h3>
+</div>
+</html>

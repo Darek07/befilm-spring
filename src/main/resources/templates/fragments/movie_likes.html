@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="likes(info, likes, isLike1, isLike2)">
+    <h3>Likes: <span th:text="${likes} ?: 0"></span></h3>
+    <form th:if="${info.isPublic}" method="post"
+          th:action="@{/movies/{nickname}/{title}/like(nickname = ${info.nickname}, title = ${info.title})}">
+        <label id="like1" th:class="${isLike1} ? 'img-liked1' : 'img-like1'">
+            <input class="likes" type="submit" th:name="like1" value=""/>
+        </label>
+        <label id="like2" th:class="${isLike2} ? 'img-liked2' : 'img-like2'">
+            <input class="likes" type="submit" th:name="like2" value=""/>
+        </label>
+    </form>
+</div>
+</html>

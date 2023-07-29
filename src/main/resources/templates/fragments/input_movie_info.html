@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="info-form(info)">
+    <textarea class="new-title" name="mtitle" placeholder="Movie" th:field="*{title}"></textarea>
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+
+    <h3>Premiere:</h3>
+    <input name="mpremiere" type="number" min="1900" max="2100" placeholder="Premiere" th:field="*{premiere}">
+    <p th:if="${#fields.hasErrors('premiere')}" th:errors="*{premiere}"></p>
+
+    <h3>Country:</h3>
+    <input name="mcountry" type="text" placeholder="Country" th:field="*{country}">
+    <p th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></p>
+
+    <h3>Genre:</h3>
+    <input name="mgenre" list="genres" placeholder="Choose genre" th:field="*{genre}">
+    <datalist id="genres">
+        <option th:each="gen : ${genres}" th:value="${gen}" th:text="${gen}"></option>
+    </datalist>
+    <p th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></p>
+
+    <h3>Description:</h3>
+    <textarea name="mdesc" placeholder="Write your own description" th:field="*{description}"></textarea>
+    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+</div>
+</html>

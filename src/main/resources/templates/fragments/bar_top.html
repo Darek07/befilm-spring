@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <nav id="top-bar" class="back" layout:fragment="top-bar">
+        <a id="top-bar-left" th:href="@{/}">BeFilm</a>
+        <a sec:authorize="isAuthenticated()" id="top-bar-right" th:href="@{/logout}">Log out</a>
+        <a sec:authorize="!isAuthenticated()" id="top-bar-right" th:href="@{/login}">Log in</a>
+    </nav>
+</html>

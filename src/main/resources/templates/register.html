@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}"
+>
+<head>
+    <title>Sign up</title>
+</head>
+<body layout:fragment="body">
+    <div class="container main">
+        <h1>BeFilm</h1>
+        <div th:if="${param.fail}">
+            Username or email already exists.
+        </div>
+        <div layout:replace="~{fragments/form_register :: register-form}"></div>
+        <div layout:replace="~{fragments/right_menu :: right-menu(login=false)}"></div>
+    </div>
+</body>

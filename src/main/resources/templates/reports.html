@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <title>Report History</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div th:if="${#lists.isEmpty(reports)}" class="vertical-center">
+        <h1>
+            There are no reports yet.
+        </h1>
+    </div>
+    <div th:each="report : ${reports}" class="note">
+        <ul>
+            <li class="title">
+                <span th:if="${#strings.length(report.movieTitle) > 40}"
+                      th:text="${#strings.substring(report.movieTitle, 0, 40)} + '...'">
+                </span>
+                <span th:unless="${#strings.length(report.movieTitle) > 40}"
+                      th:text="${report.movieTitle}">
+                </span>
+            </li>
+            <li th:text="${report.nickname}"></li>
+<!--            todo unblocking -->
+            <li>
+                <form method="post" th:action="@{/reports/block/{nickname}(nickname=${report.nickname})}">
+                    <input th:name="block" type="submit" th:value="${report.blockUser ? 'Unblock' : 'Block'}">
+                </form>
+            </li>
+        </ul>
+        <p th:text="${report.description}"></p>
+        <div th:text="${report.dateTime}"></div>
+    </div>
+</div>

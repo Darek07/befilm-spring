@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <div class="login-form" layout:fragment="register-form">
+        <form method="post" th:action="@{/register}" th:object="${user}">
+            <input name="nickname"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="Nickname"
+                   th:field="*{nickname}">
+
+            <input name="email"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="Email"
+                   th:field="*{email}">
+
+            <input name="password"
+                   type="password"
+                   autocomplete="off"
+                   placeholder="Password"
+                   th:field="*{password}">
+
+            <input name="submit" type="submit" value="Sign up">
+            <p th:if="${#fields.hasErrors('nickname')}" class="text-danger">Nickname already exists</p>
+            <p th:if="${#fields.hasErrors('email')}" class="text-danger">Wrong email format</p>
+            <p th:if="${#fields.hasErrors('password')}" class="text-danger">Password should have at least 8 characters</p>
+        </form>
+    </div>
+</html>

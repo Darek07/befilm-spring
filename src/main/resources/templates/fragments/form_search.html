@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div class="search-box" layout:fragment="search-form(class)">
+    <input id="searchInput" type="text" placeholder="Search..." th:onkeyup="performSearch([[${class}]])">
+    <script th:src="@{/js/search.js}"></script>
+</div>
+</html>

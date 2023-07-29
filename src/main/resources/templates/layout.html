@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{index}"
+>
+<head>
+    <title>Watched</title>
+</head>
+<body layout:fragment="body">
+    <div layout:replace="~{fragments/bar_top :: top-bar}"></div>
+    <div layout:replace="~{fragments/bar_left :: left-bar(${chosen})}"></div>
+    <div class="content" layout:fragment="content">
+        <div layout:replace="~{fragments/form_search :: search-form('note')}"></div>
+        <div th:if="${create_report}">
+            <div layout:replace="~{fragments/record :: records(${movies}, ${chosen}, ${create_report})}"></div>
+        </div>
+        <div th:if="!${create_report}">
+            <div layout:replace="~{fragments/record :: records(${movies}, ${chosen})}"></div>
+        </div>
+    </div>
+</body>
+</html>

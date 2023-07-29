@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="tags-form(tags)">
+    <h3>Tags:
+        <label class="checkbox-cont" th:each="tag : ${tags}">
+            <input type="checkbox" name="selectedTags" th:value="${tag}" th:text="${tag}">
+            <span class="checkmark"></span>
+        </label>
+    </h3>
+</div>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="record-delete(info, username)">
+    <form th:if="${!info.isPublic || info.nickname == username}" method="post"
+          th:action="@{/movies/{nickname}/{title}/delete(nickname = ${info.nickname}, title = ${info.title})}">
+        <input name="delete" type="submit" value="Delete this record">
+    </form>
+</div>
+</html>
